@@ -17,20 +17,22 @@
 
 
   <script defer>
-
-      const formContainer = document.getElementById('formContainer');
+          const formContainer = document.getElementById('formContainer');
       fetch('./templates/form.html')
         .then(response => response.text())
         .then(data => { formContainer.innerHTML = data })
         .catch(error => console.error('Ошибка при загрузке формы:', error));
+  </script>
 
-      const modalContainer = document.getElementById('modalContainer');
+
+<script>
+        const modalContainer = document.getElementById('modalContainer');
       fetch('./templates/modal.html')
         .then(response => response.text())
         .then(data => { modalContainer.innerHTML = data })
         .catch(error => console.error('Ошибка при загрузке модального:', error));
-    
-  </script>
+</script>
+
       <script defer src="main.bundle.js"></script>
       <script defer src="additional.bundle.js"></script>
 </body>
