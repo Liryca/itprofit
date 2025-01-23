@@ -30,6 +30,7 @@
     "webpack-dev-server": "^5.2.0"
   },
   "dependencies": {
+    "html-loader": "^5.1.0",
     "inputmask": "^5.0.9",
     "sass": "^1.83.4"
   }

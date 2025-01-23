@@ -8,32 +8,19 @@
 <script defer src="bundle.js"></script><link href="styles.css" rel="stylesheet"></head>
 <body>
   <button class="button button--open" id="openModal">Открыть модальное окно</button>
-  <div id="formContainer"></div>
-  <div id="modalContainer"></div>
+
+    <div id="formContainer">
+      <script src="./templates/form.html"></script>
+  </div>
+  
+  <div id="modalContainer">
+    @@include('templates/modal.html', {})
+    <script src="./templates/modal.html"></script>
+  </div>
 
   <div id="preloader" class="preloader">
     <div class="loader"></div>
   </div>
-
-
-  <script defer>
-          const formContainer = document.getElementById('formContainer');
-      fetch('./templates/form.html')
-        .then(response => response.text())
-        .then(data => { formContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке формы:', error));
-  </script>
-
-
-<script>
-        const modalContainer = document.getElementById('modalContainer');
-      fetch('./templates/modal.html')
-        .then(response => response.text())
-        .then(data => { modalContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке модального:', error));
-</script>
-
       <script defer src="bundle.js"></script>
-
 </body>
 </html>
