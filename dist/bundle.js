@@ -4120,14 +4120,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-
-// window.addEventListener("load", () => {
-//   console.log("DOM загружен");
-var form = document.getElementById("contactForm");
-form.addEventListener("submit", function (event) {
-  (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
+window.addEventListener("load", function () {
+  console.log("DOM загружен");
+  var form = document.getElementById("contactForm");
+  form.addEventListener("submit", function (event) {
+    (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
+  });
 });
-// });
 })();
 
 /******/ })()
