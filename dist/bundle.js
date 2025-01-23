@@ -126,25 +126,25 @@ function _handleFormSubmission() {
   \******************************/
 /***/ (() => {
 
-document.addEventListener("DOMContentLoaded", function () {
-  var modal = document.getElementById("modal");
-  var openModalBtn = document.getElementById("openModal");
-  var closeModalBtn = document.getElementById("closeModal");
-  openModalBtn.addEventListener("click", function () {
-    modal.classList.add("active");
-    document.body.style.overflow = "hidden";
-  });
-  closeModalBtn.addEventListener("click", function () {
-    modal.classList.remove("active");
-    document.body.style.overflow = "";
-  });
-  modal.addEventListener("click", function (event) {
-    if (event.target === modal) {
-      modal === null || modal === void 0 || modal.classList.remove("active");
-      document.body.style.overflow = "";
-    }
-  });
+// window.addEventListener("load", () => {
+var modal = document.getElementById("modal");
+var openModalBtn = document.getElementById("openModal");
+var closeModalBtn = document.getElementById("closeModal");
+openModalBtn.addEventListener("click", function () {
+  modal.classList.add("active");
+  document.body.style.overflow = "hidden";
 });
+closeModalBtn.addEventListener("click", function () {
+  modal.classList.remove("active");
+  document.body.style.overflow = "";
+});
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal === null || modal === void 0 || modal.classList.remove("active");
+    document.body.style.overflow = "";
+  }
+});
+// });
 
 /***/ }),
 
@@ -164,7 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! inputmask */ "./node_modules/inputmask/dist/inputmask.js");
 /* harmony import */ var inputmask__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(inputmask__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/main.scss */ "./src/styles/main.scss");
-var _document;
 
 
 var emailError = "Введите корректный адрес электронной почты.";
@@ -172,7 +171,7 @@ var emptyError = "Поле обязательно для заполнения";
 var setInputMask = function setInputMask() {
   var phoneInput = document.getElementById("phone");
   var im = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())({
-    mask: "99-999-99",
+    mask: "999 (99) 999-99-99",
     placeholder: " "
   });
   im === null || im === void 0 || im.mask(phoneInput);
@@ -243,7 +242,7 @@ var clearErrorFromFields = function clearErrorFromFields(form) {
     }
   });
 };
-(_document = document) === null || _document === void 0 ? void 0 : _document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   setInputMask();
 });
 
@@ -4121,13 +4120,14 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  console.log("DOM загружен");
-  var form = document.getElementById("contactForm");
-  form.addEventListener("submit", function (event) {
-    (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
-  });
+
+// window.addEventListener("load", () => {
+//   console.log("DOM загружен");
+var form = document.getElementById("contactForm");
+form.addEventListener("submit", function (event) {
+  (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
 });
+// });
 })();
 
 /******/ })()

@@ -3,11 +3,11 @@ import "./modal.js";
 import "./validation.js";
 import "./ajax.js";
 
-window.addEventListener("load", () => {
-  console.log("DOM загружен");
-  const form = document.getElementById("contactForm");
+// window.addEventListener("load", () => {
+//   console.log("DOM загружен");
+const form = document.getElementById("contactForm");
 
-  form.addEventListener("submit", (event) => {
-    handleFormSubmission(event, form);
-  });
+form.addEventListener("submit", (event) => {
+  handleFormSubmission(event, form);
 });
+// });
