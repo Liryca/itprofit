@@ -9,7 +9,7 @@ openModalBtn.addEventListener("click", () => {
 });
 
 closeModalBtn.addEventListener("click", () => {
-  modal.classList.remove("active");
+  modal?.classList.remove("active");
   document.body.style.overflow = "";
 });
 
