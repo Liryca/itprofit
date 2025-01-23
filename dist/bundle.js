@@ -120,6 +120,34 @@ function _handleFormSubmission() {
 
 /***/ }),
 
+/***/ "./src/scripts/modal.js":
+/*!******************************!*\
+  !*** ./src/scripts/modal.js ***!
+  \******************************/
+/***/ (() => {
+
+document.addEventListener("DOMContentLoaded", function () {
+  var modal = document.getElementById("modal");
+  var openModalBtn = document.getElementById("openModal");
+  var closeModalBtn = document.getElementById("closeModal");
+  openModalBtn.addEventListener("click", function () {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+  closeModalBtn.addEventListener("click", function () {
+    modal.classList.remove("active");
+    document.body.style.overflow = "";
+  });
+  modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal === null || modal === void 0 || modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
+});
+
+/***/ }),
+
 /***/ "./src/scripts/validation.js":
 /*!***********************************!*\
   !*** ./src/scripts/validation.js ***!
@@ -4085,7 +4113,13 @@ var __webpack_exports__ = {};
   !*** ./src/scripts/main.js ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax */ "./src/scripts/ajax.js");
+/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax.js */ "./src/scripts/ajax.js");
+/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal.js */ "./src/scripts/modal.js");
+/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modal_js__WEBPACK_IMPORTED_MODULE_1__);
+/* harmony import */ var _validation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./validation.js */ "./src/scripts/validation.js");
+
+
+
 
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM загружен");
@@ -4098,4 +4132,4 @@ document.addEventListener("DOMContentLoaded", function () {
 
 /******/ })()
 ;
-//# sourceMappingURL=main.bundle.js.map
+//# sourceMappingURL=bundle.js.map

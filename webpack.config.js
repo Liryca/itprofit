@@ -4,9 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: "./src/main.js",
+  entry: "./src/scripts/main.js",
   output: {
-    filename: "main.bundle.js",
+    filename: "bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },
@@ -55,6 +55,5 @@ module.exports = {
     compress: true,
     port: 3000,
     open: true,
-    historyApiFallback: true,
   },
 };
