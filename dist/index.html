@@ -17,21 +17,39 @@
 
 
   <script defer>
-          const formContainer = document.getElementById('formContainer');
-      fetch('./templates/form.html')
-        .then(response => response.text())
-        .then(data => { formContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке формы:', error));
+    // Функция для скрытия прелоадера
+    function hidePreloader() {
+      const preloader = document.getElementById('preloader');
+      preloader.style.display = 'none'; // Скрываем прелоадер
+    }
+
+    // Загрузка формы
+    const formContainer = document.getElementById('formContainer');
+    fetch('./templates/form.html')
+      .then(response => response.text())
+      .then(data => {
+        formContainer.innerHTML = data;
+        hidePreloader(); // Скрываем прелоадер после загрузки формы
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке формы:', error);
+        hidePreloader(); // Также скрываем прелоадер в случае ошибки
+      });
+
+    // Загрузка модального окна
+    const modalContainer = document.getElementById('modalContainer');
+    fetch('./templates/modal.html')
+      .then(response => response.text())
+      .then(data => {
+        modalContainer.innerHTML = data;
+        hidePreloader(); // Скрываем прелоадер после загрузки модального окна
+      })
+      .catch(error => {
+        console.error('Ошибка при загрузке модального:', error);
+        hidePreloader(); // Также скрываем прелоадер в случае ошибки
+      });
   </script>
 
-
-<script defer>
-        const modalContainer = document.getElementById('modalContainer');
-      fetch('./templates/modal.html')
-        .then(response => response.text())
-        .then(data => { modalContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке модального:', error));
-</script>
 
       <script defer src="bundle.js"></script>
 
