@@ -16,39 +16,20 @@
   </div>
 
 
-  <script async defer>
+  <script defer>
+          const formContainer = document.getElementById('formContainer');
+      fetch('./templates/form.html')
+        .then(response => response.text())
+        .then(data => { formContainer.innerHTML = data })
+        .catch(error => console.error('Ошибка при загрузке формы:', error));
 
-    function hidePreloader() {
-      const preloader = document.getElementById('preloader');
-      preloader.style.display = 'none'; 
-    }
 
-    const formContainer = document.getElementById('formContainer');
-    fetch('./templates/form.html')
-      .then(response => response.text())
-      .then(data => {
-        formContainer.innerHTML = data;
-        hidePreloader(); 
-      })
-      .catch(error => {
-        console.error('Ошибка при загрузке формы:', error);
-        hidePreloader(); 
-      });
-
-  
-    const modalContainer = document.getElementById('modalContainer');
-    fetch('./templates/modal.html')
-      .then(response => response.text())
-      .then(data => {
-        modalContainer.innerHTML = data;
-        hidePreloader(); 
-      })
-      .catch(error => {
-        console.error('Ошибка при загрузке модального:', error);
-        hidePreloader(); 
-      });
-  </script>
-
+        const modalContainer = document.getElementById('modalContainer');
+        fetch('./templates/modal.html')
+        .then(response => response.text())
+        .then(data => { modalContainer.innerHTML = data })
+        .catch(error => console.error('Ошибка при загрузке модального:', error));
+</script>
 
       <script defer src="bundle.js"></script>
 
