@@ -7,7 +7,7 @@ const emptyError = "Поле обязательно для заполнения"
 const setInputMask = () => {
   const phoneInput = document.getElementById("phone");
   const im = new Inputmask({
-    mask: "99-999-99",
+    mask: "999 (99) 999-99-99",
     placeholder: " ",
   });
   im?.mask(phoneInput);
@@ -83,6 +83,6 @@ export const clearErrorFromFields = (form) => {
   });
 };
 
-document?.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   setInputMask();
 });
