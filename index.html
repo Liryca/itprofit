@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Форма обратной связи</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <button class="button button--open" id="openModal">Открыть модальное окно</button>
+  <div id="formContainer"></div>
+  <div id="modalContainer"></div>
+
+  <div id="preloader" class="preloader">
+    <div class="loader"></div>
+  </div>
+
+
+  <script defer >
+    const formContainer = document.getElementById('formContainer');
+    fetch('./templates/form.html')
+      .then(response => response.text())
+      .then(data => { formContainer.innerHTML = data })
+      .catch(error => console.error('Ошибка при загрузке формы:', error));
+  </script>
+    <script defer>
+      const modalContainer = document.getElementById('modalContainer');
+      fetch('./templates/modal.html')
+        .then(response => response.text())
+        .then(data => { modalContainer.innerHTML = data })
+        .catch(error => console.error('Ошибка при загрузке модального:', error));
+  
+  
+    </script>
+      <script defer src="main.bundle.js"></script>
+      <script defer src="additional.bundle.js"></script>
+</body>
+</html>
