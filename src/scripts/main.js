@@ -3,7 +3,7 @@ import "./modal.js";
 import "./validation.js";
 import "./ajax.js";
 
-document.addEventListener("DOMContentLoaded", () => {
+window.addEventListener("load", () => {
   console.log("DOM загружен");
   const form = document.getElementById("contactForm");
 
