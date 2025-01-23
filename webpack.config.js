@@ -4,12 +4,9 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CopyWebpackPlugin = require("copy-webpack-plugin");
 
 module.exports = {
-  entry: {
-    main: "./src/scripts/main.js",
-    additional: "./src/scripts/modal.js",
-  },
+  entry: "./src/main.js",
   output: {
-    filename: "[name].bundle.js",
+    filename: "main.bundle.js",
     path: path.resolve(__dirname, "dist"),
     clean: true,
   },

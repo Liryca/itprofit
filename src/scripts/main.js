@@ -1,4 +1,7 @@
 import { handleFormSubmission } from "./ajax";
+import "./modal.js";
+import "./validation.js";
+import "./ajax.js";
 
 document.addEventListener("DOMContentLoaded", () => {
   console.log("DOM загружен");
