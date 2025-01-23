@@ -7,64 +7,56 @@
   <link rel="stylesheet" href="styles.css">
 <script defer src="bundle.js"></script><link href="styles.css" rel="stylesheet"></head>
 <body>
-  <button class="button button--open" id="openModal">Открыть модальное окно</button>
-  <div id="formContainer"></div>
-  <div id="modalContainer"></div>
 
-  <div id="preloader" class="preloader">
-    <div class="loader"></div>
-  </div>
+  <header>
+    <button class="button button--open" id="openModal">Открыть модальное окно</button>
+  </header>
 
-  <div class="modal modal--overlay" id="modal">
-    <div class="modal__content">
-        <h2 class="modal__title">Разрешить уведомления</h2>
-        <p class="modal__text">Если вы подпишитесь на наши обновления,то всегда будете в курсе последних событий в мире IT</p>
-        <button class="button button--close" id="closeModal">Закрыть</button>
+  <main>
+    <div id="preloader" class="preloader">
+      <div class="loader"></div>
     </div>
-  </div>
 
-  <form id="contactForm" class="form" novalidate>
-    <div id="sussessMessage" class="form__message"></div>
-    <div class="form__field">
-        <label for="name" class="form__label">Имя*</label>
-        <input type="text" id="name" class="form__input">
-        <div id="nameError" class="form__error"></div> 
-    </div>
-    <div class="form__field">
-        <label for="email" class="form__label">E-mail*</label>
-        <input type="email" id="email" class="form__input">
-        <div id="emailError" class="form__error"></div>
-    </div>
-    <div class="form__field">
-        <label for="phone" class="form__label">Телефон*</label>
-        <input type="text" id="phone" class="form__input">
-        <div id="phoneError" class="form__error"></div>
-    </div>
-    <div class="form__field">
-        <label for="message" class="form__label">Сообщение*</label>
-        <textarea id="message" class="form__textarea"></textarea>
-        <div id="messageError" class="form__error"></div>
-    </div>
-    <button id="btnSubmit" type="submit" class="form__submit">Отправить</button>
-  </form>
+    <section id="modalContainer">
+      <div class="modal modal--overlay" id="modal">
+        <div class="modal__content">
+          <h2 class="modal__title">Разрешить уведомления</h2>
+          <p class="modal__text">Если вы подпишитесь на наши обновления, то всегда будете в курсе последних событий в мире IT.</p>
+          <button class="button button--close" id="closeModal">Закрыть</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="formContainer">
+      <form id="contactForm" class="form" novalidate>
+        <div id="successMessage" class="form__message"></div>
+        <div class="form__field">
+          <label for="name" class="form__label">Имя*</label>
+          <input type="text" id="name" class="form__input" required>
+          <div id="nameError" class="form__error"></div>
+        </div>
+        <div class="form__field">
+          <label for="email" class="form__label">E-mail*</label>
+          <input type="email" id="email" class="form__input" required>
+          <div id="emailError" class="form__error"></div>
+        </div>
+        <div class="form__field">
+          <label for="phone" class="form__label">Телефон*</label>
+          <input type="text" id="phone" class="form__input" required>
+          <div id="phoneError" class="form__error"></div>
+        </div>
+        <div class="form__field">
+          <label for="message" class="form__label">Сообщение*</label>
+          <textarea id="message" class="form__textarea" required></textarea>
+          <div id="messageError" class="form__error"></div>
+        </div>
+        <button id="btnSubmit" type="submit" class="form__submit">Отправить</button>
+      </form>
+    </section>
+  </main>
 
 
-  <!-- <script defer >
-          const formContainer = document.getElementById('formContainer');
-      fetch('./templates/form.html')
-        .then(response => response.text())
-        .then(data => { formContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке формы:', error));
 
-
-        const modalContainer = document.getElementById('modalContainer');
-        fetch('./templates/modal.html')
-        .then(response => response.text())
-        .then(data => { modalContainer.innerHTML = data })
-        .catch(error => console.error('Ошибка при загрузке модального:', error));
-</script> -->
-
-      <script defer src="bundle.js"></script>
-
+  <script defer src="bundle.js"></script>
 </body>
 </html>

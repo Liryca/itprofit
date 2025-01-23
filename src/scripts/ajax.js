@@ -6,6 +6,8 @@ async function mockServerResponse(form) {
     setTimeout(() => {
       const validationResult = validateForm(form);
 
+      console.log(validationResult);
+
       if (!validationResult.isValid) {
         resolve({ status: "error", fields: validationResult.errors });
       } else {
@@ -36,19 +38,15 @@ async function mockServerResponse(form) {
 
 export async function handleFormSubmission(event, form) {
   event.preventDefault();
-  clearErrorFromFields(form);
+  // clearErrorFromFields(form);
 
   const preloader = document.getElementById("preloader");
   preloader.style.display = "flex";
 
   try {
     const data = await mockServerResponse(form);
-
-    console.log(data);
-
     if (data.status === "success") {
       const successMsg = document.getElementById("successMessage");
-      alert(data.msg);
       form.reset();
       successMsg.textContent = data.msg;
     } else {

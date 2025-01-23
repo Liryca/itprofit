@@ -46,6 +46,7 @@ function _mockServerResponse() {
           return _context.abrupt("return", new Promise(function (resolve) {
             setTimeout(function () {
               var validationResult = (0,_validation_js__WEBPACK_IMPORTED_MODULE_0__.validateForm)(form);
+              console.log(validationResult);
               if (!validationResult.isValid) {
                 resolve({
                   status: "error",
@@ -77,18 +78,16 @@ function _handleFormSubmission() {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           event.preventDefault();
-          (0,_validation_js__WEBPACK_IMPORTED_MODULE_0__.clearErrorFromFields)(form);
+          // clearErrorFromFields(form);
           preloader = document.getElementById("preloader");
           preloader.style.display = "flex";
-          _context2.prev = 4;
-          _context2.next = 7;
+          _context2.prev = 3;
+          _context2.next = 6;
           return mockServerResponse(form);
-        case 7:
+        case 6:
           data = _context2.sent;
-          console.log(data);
           if (data.status === "success") {
             successMsg = document.getElementById("successMessage");
-            alert(data.msg);
             form.reset();
             successMsg.textContent = data.msg;
           } else {
@@ -99,21 +98,21 @@ function _handleFormSubmission() {
               }
             });
           }
-          _context2.next = 15;
+          _context2.next = 13;
           break;
-        case 12:
-          _context2.prev = 12;
-          _context2.t0 = _context2["catch"](4);
+        case 10:
+          _context2.prev = 10;
+          _context2.t0 = _context2["catch"](3);
           console.error("Ошибка при отправке формы:", _context2.t0);
-        case 15:
-          _context2.prev = 15;
+        case 13:
+          _context2.prev = 13;
           preloader.style.display = "none";
-          return _context2.finish(15);
-        case 18:
+          return _context2.finish(13);
+        case 16:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[4, 12, 15, 18]]);
+    }, _callee2, null, [[3, 10, 13, 16]]);
   }));
   return _handleFormSubmission.apply(this, arguments);
 }
@@ -4124,6 +4123,7 @@ window.addEventListener("load", function () {
   console.log("DOM загружен");
   var form = document.getElementById("contactForm");
   form.addEventListener("submit", function (event) {
+    console.log(event);
     (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
   });
 });
