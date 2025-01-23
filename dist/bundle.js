@@ -126,7 +126,7 @@ function _handleFormSubmission() {
   \******************************/
 /***/ (() => {
 
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   var modal = document.getElementById("modal");
   var openModalBtn = document.getElementById("openModal");
   var closeModalBtn = document.getElementById("closeModal");
@@ -4120,7 +4120,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-document.addEventListener("DOMContentLoaded", function () {
+window.addEventListener("load", function () {
   console.log("DOM загружен");
   var form = document.getElementById("contactForm");
   form.addEventListener("submit", function (event) {
