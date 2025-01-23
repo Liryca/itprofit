@@ -126,25 +126,25 @@ function _handleFormSubmission() {
   \******************************/
 /***/ (() => {
 
-// window.addEventListener("load", () => {
-var modal = document.getElementById("modal");
-var openModalBtn = document.getElementById("openModal");
-var closeModalBtn = document.getElementById("closeModal");
-openModalBtn.addEventListener("click", function () {
-  modal.classList.add("active");
-  document.body.style.overflow = "hidden";
-});
-closeModalBtn === null || closeModalBtn === void 0 || closeModalBtn.addEventListener("click", function () {
-  modal === null || modal === void 0 || modal.classList.remove("active");
-  document.body.style.overflow = "";
-});
-modal === null || modal === void 0 ? void 0 : modal.addEventListener("click", function (event) {
-  if (event.target === modal) {
+window.addEventListener("load", function () {
+  var modal = document.getElementById("modal");
+  var openModalBtn = document.getElementById("openModal");
+  var closeModalBtn = document.getElementById("closeModal");
+  openModalBtn.addEventListener("click", function () {
+    modal.classList.add("active");
+    document.body.style.overflow = "hidden";
+  });
+  closeModalBtn === null || closeModalBtn === void 0 || closeModalBtn.addEventListener("click", function () {
     modal === null || modal === void 0 || modal.classList.remove("active");
     document.body.style.overflow = "";
-  }
+  });
+  modal === null || modal === void 0 || modal.addEventListener("click", function (event) {
+    if (event.target === modal) {
+      modal === null || modal === void 0 || modal.classList.remove("active");
+      document.body.style.overflow = "";
+    }
+  });
 });
-// });
 
 /***/ }),
 
