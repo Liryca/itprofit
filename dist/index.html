@@ -16,37 +16,36 @@
   </div>
 
 
-  <script defer>
-    // Функция для скрытия прелоадера
+  <script async defer>
+
     function hidePreloader() {
       const preloader = document.getElementById('preloader');
-      preloader.style.display = 'none'; // Скрываем прелоадер
+      preloader.style.display = 'none'; 
     }
 
-    // Загрузка формы
     const formContainer = document.getElementById('formContainer');
     fetch('./templates/form.html')
       .then(response => response.text())
       .then(data => {
         formContainer.innerHTML = data;
-        hidePreloader(); // Скрываем прелоадер после загрузки формы
+        hidePreloader(); 
       })
       .catch(error => {
         console.error('Ошибка при загрузке формы:', error);
-        hidePreloader(); // Также скрываем прелоадер в случае ошибки
+        hidePreloader(); 
       });
 
-    // Загрузка модального окна
+  
     const modalContainer = document.getElementById('modalContainer');
     fetch('./templates/modal.html')
       .then(response => response.text())
       .then(data => {
         modalContainer.innerHTML = data;
-        hidePreloader(); // Скрываем прелоадер после загрузки модального окна
+        hidePreloader(); 
       })
       .catch(error => {
         console.error('Ошибка при загрузке модального:', error);
-        hidePreloader(); // Также скрываем прелоадер в случае ошибки
+        hidePreloader(); 
       });
   </script>
 
