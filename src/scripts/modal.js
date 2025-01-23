@@ -8,12 +8,12 @@ openModalBtn.addEventListener("click", () => {
   document.body.style.overflow = "hidden";
 });
 
-closeModalBtn.addEventListener("click", () => {
+closeModalBtn?.addEventListener("click", () => {
   modal?.classList.remove("active");
   document.body.style.overflow = "";
 });
 
-modal.addEventListener("click", (event) => {
+modal?.addEventListener("click", (event) => {
   if (event.target === modal) {
     modal?.classList.remove("active");
     document.body.style.overflow = "";

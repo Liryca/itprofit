@@ -134,11 +134,11 @@ openModalBtn.addEventListener("click", function () {
   modal.classList.add("active");
   document.body.style.overflow = "hidden";
 });
-closeModalBtn.addEventListener("click", function () {
-  modal.classList.remove("active");
+closeModalBtn === null || closeModalBtn === void 0 || closeModalBtn.addEventListener("click", function () {
+  modal === null || modal === void 0 || modal.classList.remove("active");
   document.body.style.overflow = "";
 });
-modal.addEventListener("click", function (event) {
+modal === null || modal === void 0 ? void 0 : modal.addEventListener("click", function (event) {
   if (event.target === modal) {
     modal === null || modal === void 0 || modal.classList.remove("active");
     document.body.style.overflow = "";
