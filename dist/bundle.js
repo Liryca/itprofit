@@ -20,26 +20,8 @@ function _asyncToGenerator(n) { return function () { var t = this, e = arguments
 
 
 //имитация ответа с сервера
-function mockServerResponse(_x) {
-  return _mockServerResponse.apply(this, arguments);
-} //так бы ваглядел вызов без использования axios
-// async function sendFForm(data) {
-//   const response = await fetch("/api/submit", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(data),
-//   });
-//   if (!response.ok) {
-//     const errorData = await response.json();
-//     return { status: "error", fields: errorData.errors };
-//   }
-//   const resultData = await response.json();
-//   return { status: "success", msg: resultData.message };
-// }
-function _mockServerResponse() {
-  _mockServerResponse = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(form) {
+var mockServerResponse = /*#__PURE__*/function () {
+  var _ref = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee(form) {
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -66,30 +48,49 @@ function _mockServerResponse() {
       }
     }, _callee);
   }));
-  return _mockServerResponse.apply(this, arguments);
-}
-function handleFormSubmission(_x2, _x3) {
-  return _handleFormSubmission.apply(this, arguments);
-}
-function _handleFormSubmission() {
-  _handleFormSubmission = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event, form) {
-    var preloader, data, successMsg;
+  return function mockServerResponse(_x) {
+    return _ref.apply(this, arguments);
+  };
+}();
+
+//так бы ваглядел вызов без использования axios
+// const sendForm  = async(data) => {
+//   const response = await fetch("/api/submit", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(data),
+//   });
+
+//   if (!response.ok) {
+//     const errorData = await response.json();
+//     return { status: "error", fields: errorData.errors };
+//   }
+
+//   const resultData = await response.json();
+//   return { status: "success", msg: resultData.message };
+// }
+
+var handleFormSubmission = /*#__PURE__*/function () {
+  var _ref2 = _asyncToGenerator(/*#__PURE__*/_regeneratorRuntime().mark(function _callee2(event, form) {
+    var preloader, successMsg, data;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           event.preventDefault();
-          // clearErrorFromFields(form);
+          (0,_validation_js__WEBPACK_IMPORTED_MODULE_0__.clearErrorFromFields)(form);
           preloader = document.getElementById("preloader");
+          successMsg = document.getElementById("successMessage");
           preloader.style.display = "flex";
-          _context2.prev = 3;
-          _context2.next = 6;
+          _context2.prev = 5;
+          _context2.next = 8;
           return mockServerResponse(form);
-        case 6:
+        case 8:
           data = _context2.sent;
           if (data.status === "success") {
-            successMsg = document.getElementById("successMessage");
-            form.reset();
             successMsg.textContent = data.msg;
+            form.reset();
           } else {
             Object.keys(data.fields).forEach(function (field) {
               var inputElement = document.getElementById(field);
@@ -98,24 +99,35 @@ function _handleFormSubmission() {
               }
             });
           }
-          _context2.next = 13;
+          _context2.next = 15;
           break;
-        case 10:
-          _context2.prev = 10;
-          _context2.t0 = _context2["catch"](3);
+        case 12:
+          _context2.prev = 12;
+          _context2.t0 = _context2["catch"](5);
           console.error("Ошибка при отправке формы:", _context2.t0);
-        case 13:
-          _context2.prev = 13;
+        case 15:
+          _context2.prev = 15;
           preloader.style.display = "none";
-          return _context2.finish(13);
-        case 16:
+          setTimeout(function () {
+            return successMsg.textContent = "";
+          }, 2000);
+          return _context2.finish(15);
+        case 19:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[3, 10, 13, 16]]);
+    }, _callee2, null, [[5, 12, 15, 19]]);
   }));
-  return _handleFormSubmission.apply(this, arguments);
-}
+  return function handleFormSubmission(_x2, _x3) {
+    return _ref2.apply(this, arguments);
+  };
+}();
+document.addEventListener("DOMContentLoaded", function () {
+  var form = document.getElementById("contactForm");
+  form.addEventListener("submit", function (event) {
+    handleFormSubmission(event, form);
+  });
+});
 
 /***/ }),
 
@@ -125,22 +137,24 @@ function _handleFormSubmission() {
   \******************************/
 /***/ (() => {
 
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
   var modal = document.getElementById("modal");
   var openModalBtn = document.getElementById("openModal");
   var closeModalBtn = document.getElementById("closeModal");
   openModalBtn.addEventListener("click", function () {
+    var scrollBarWidth = window.innerWidth - document.body.clientWidth;
+    scrollBarWidth > 0 ? document.body.style.setProperty("--scrollbar-width", "".concat(scrollBarWidth, "px")) : document.body.style.setProperty("--scrollbar-width", "".concat(scrollBarWidth, "px"));
     modal.classList.add("active");
-    document.body.style.overflow = "hidden";
+    document.body.classList.add("modal-open");
   });
   closeModalBtn.addEventListener("click", function () {
     modal.classList.remove("active");
-    document.body.style.overflow = "";
+    document.body.classList.remove("modal-open");
   });
   modal.addEventListener("click", function (event) {
     if (event.target === modal) {
-      modal === null || modal === void 0 || modal.classList.remove("active");
-      document.body.style.overflow = "";
+      modal.classList.remove("active");
+      document.body.classList.remove("modal-open");
     }
   });
 });
@@ -165,34 +179,35 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _styles_main_scss__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../styles/main.scss */ "./src/styles/main.scss");
 
 
-var emailError = "Введите корректный адрес электронной почты.";
-var emptyError = "Поле обязательно для заполнения";
+var EMAIL_ERROR = "Введите корректный адрес электронной почты.";
+var EMPTY_ERROR = "Поле обязательно для заполнения";
+var MASK = "999 (99) 999-99-99";
+var REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 var setInputMask = function setInputMask() {
   var phoneInput = document.getElementById("phone");
   var im = new (inputmask__WEBPACK_IMPORTED_MODULE_0___default())({
-    mask: "999 (99) 999-99-99",
+    mask: MASK,
     placeholder: " "
   });
-  im === null || im === void 0 || im.mask(phoneInput);
+  im.mask(phoneInput);
 };
 var validateEmail = function validateEmail(email) {
-  var regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
+  return REGEX.test(email);
 };
 var validateField = function validateField(input) {
   var isValid = true;
   var errorMessage = "";
   if (input.id === "email") {
     if (input.value.trim() === "") {
-      errorMessage = emptyError;
+      errorMessage = EMPTY_ERROR;
       isValid = false;
     } else if (!validateEmail(input.value)) {
-      errorMessage = emailError;
+      errorMessage = EMAIL_ERROR;
       isValid = false;
     }
   } else {
     if (!input.value.trim()) {
-      errorMessage = emptyError;
+      errorMessage = EMPTY_ERROR;
       isValid = false;
     }
   }
@@ -241,7 +256,7 @@ var clearErrorFromFields = function clearErrorFromFields(form) {
     }
   });
 };
-window.addEventListener("load", function () {
+document.addEventListener("DOMContentLoaded", function () {
   setInputMask();
 });
 
@@ -4111,22 +4126,13 @@ var __webpack_exports__ = {};
   !*** ./src/scripts/main.js ***!
   \*****************************/
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _ajax__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ajax.js */ "./src/scripts/ajax.js");
-/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modal.js */ "./src/scripts/modal.js");
-/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_modal_js__WEBPACK_IMPORTED_MODULE_1__);
-/* harmony import */ var _validation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./validation.js */ "./src/scripts/validation.js");
+/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modal.js */ "./src/scripts/modal.js");
+/* harmony import */ var _modal_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modal_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _validation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./validation.js */ "./src/scripts/validation.js");
+/* harmony import */ var _ajax_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./ajax.js */ "./src/scripts/ajax.js");
 
 
 
-
-window.addEventListener("load", function () {
-  console.log("DOM загружен");
-  var form = document.getElementById("contactForm");
-  form.addEventListener("submit", function (event) {
-    console.log(event);
-    (0,_ajax__WEBPACK_IMPORTED_MODULE_0__.handleFormSubmission)(event, form);
-  });
-});
 })();
 
 /******/ })()

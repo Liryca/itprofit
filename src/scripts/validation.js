@@ -1,21 +1,22 @@
 import Inputmask from "inputmask";
 import "../styles/main.scss";
 
-const emailError = "Введите корректный адрес электронной почты.";
-const emptyError = "Поле обязательно для заполнения";
+const EMAIL_ERROR = "Введите корректный адрес электронной почты.";
+const EMPTY_ERROR = "Поле обязательно для заполнения";
+const MASK = "999 (99) 999-99-99";
+const REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 const setInputMask = () => {
   const phoneInput = document.getElementById("phone");
   const im = new Inputmask({
-    mask: "999 (99) 999-99-99",
+    mask: MASK,
     placeholder: " ",
   });
-  im?.mask(phoneInput);
+  im.mask(phoneInput);
 };
 
 const validateEmail = (email) => {
-  const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  return regex.test(email);
+  return REGEX.test(email);
 };
 
 const validateField = (input) => {
@@ -24,15 +25,15 @@ const validateField = (input) => {
 
   if (input.id === "email") {
     if (input.value.trim() === "") {
-      errorMessage = emptyError;
+      errorMessage = EMPTY_ERROR;
       isValid = false;
     } else if (!validateEmail(input.value)) {
-      errorMessage = emailError;
+      errorMessage = EMAIL_ERROR;
       isValid = false;
     }
   } else {
     if (!input.value.trim()) {
-      errorMessage = emptyError;
+      errorMessage = EMPTY_ERROR;
       isValid = false;
     }
   }
@@ -83,6 +84,6 @@ export const clearErrorFromFields = (form) => {
   });
 };
 
-window.addEventListener("load", () => {
+document.addEventListener("DOMContentLoaded", () => {
   setInputMask();
 });

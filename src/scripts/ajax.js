@@ -1,7 +1,7 @@
 import { validateForm, showError, clearErrorFromFields } from "./validation.js";
 
 //имитация ответа с сервера
-async function mockServerResponse(form) {
+const mockServerResponse = async (form) => {
   return new Promise((resolve) => {
     setTimeout(() => {
       const validationResult = validateForm(form);
@@ -15,10 +15,10 @@ async function mockServerResponse(form) {
       }
     }, 1000);
   });
-}
+};
 
 //так бы ваглядел вызов без использования axios
-// async function sendFForm(data) {
+// const sendForm  = async(data) => {
 //   const response = await fetch("/api/submit", {
 //     method: "POST",
 //     headers: {
@@ -36,19 +36,19 @@ async function mockServerResponse(form) {
 //   return { status: "success", msg: resultData.message };
 // }
 
-export async function handleFormSubmission(event, form) {
+export const handleFormSubmission = async (event, form) => {
   event.preventDefault();
-  // clearErrorFromFields(form);
+  clearErrorFromFields(form);
 
   const preloader = document.getElementById("preloader");
+  const successMsg = document.getElementById("successMessage");
   preloader.style.display = "flex";
 
   try {
     const data = await mockServerResponse(form);
     if (data.status === "success") {
-      const successMsg = document.getElementById("successMessage");
-      form.reset();
       successMsg.textContent = data.msg;
+      form.reset();
     } else {
       Object.keys(data.fields).forEach((field) => {
         const inputElement = document.getElementById(field);
@@ -61,5 +61,14 @@ export async function handleFormSubmission(event, form) {
     console.error("Ошибка при отправке формы:", error);
   } finally {
     preloader.style.display = "none";
+    setTimeout(() => (successMsg.textContent = ""), 2000);
   }
-}
+};
+
+document.addEventListener("DOMContentLoaded", () => {
+  const form = document.getElementById("contactForm");
+
+  form.addEventListener("submit", (event) => {
+    handleFormSubmission(event, form);
+  });
+});
